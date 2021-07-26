@@ -6,6 +6,7 @@ while(True):
     ret, frame = cap.read()
     # 我们对帧的操作在这里
     # gray = cv.cvtColor(frame, cv.COLOR_BGR2GRAY)
+    cv.rectangle(frame,(100,50),(250,300),(255,0,0),5)
     # 显示返回的每帧
     cv.imshow('frame',frame)
     if cv.waitKey(1) & 0xFF == ord('q'):
