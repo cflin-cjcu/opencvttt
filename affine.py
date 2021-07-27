@@ -1,6 +1,6 @@
 import cv2
 import numpy as np
-from matplotlib import pyplot as plt
+from matplotlib import pyPlot as plt
 def bgr2rbg(img):
     '''
         将颜色空间从BGR转换为RBG
@@ -8,10 +8,10 @@ def bgr2rbg(img):
     return img[:,:,::-1]
 
 #開圖
-img = cv2.imread('./images/test1.jpg')
-cv2.namedWindow('img1')
-img1 = cv2.resize(img,None,fx=1/2,fy=1/2,interpolation=cv2.INTER_CUBIC)
-img2 = img1[:,::-1] 
+img1 = cv2.imread('./test.png')
+
+# img1 = cv2.resize(img,None,fx=1/2,fy=1/2,interpolation=cv2.INTER_CUBIC)
+img2 = img1[:,::-1]
 img3 = img1[::-1]
 img4 = img1[::-1, ::-1]
 
