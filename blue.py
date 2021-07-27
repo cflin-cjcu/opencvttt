@@ -5,9 +5,10 @@ def nothing(x):
     pass
 
 #開圖
-img1 = cv2.imread('./images/test1.jpg')
-img2 = cv2.cvtColor(img1,cv2.COLOR_BGR2HSV)
+img = cv2.imread('./images/test1.jpg')
 cv2.namedWindow('img1')
+img1 = cv2.resize(img,None,fx=1/2,fy=1/2,interpolation=cv2.INTER_CUBIC)
+img2 = cv2.cvtColor(img1,cv2.COLOR_BGR2HSV)
 cv2.createTrackbar('A','img1',0,255,nothing)
 cv2.createTrackbar('B','img1',0,255,nothing)
 

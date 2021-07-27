@@ -4,6 +4,7 @@ import numpy as np
 def nothing(x):
     pass
 
+
 cv2.namedWindow('img1')
 cv2.createTrackbar('A','img1',0,255,nothing)
 cv2.createTrackbar('B','img1',0,255,nothing)
