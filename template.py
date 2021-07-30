@@ -9,7 +9,7 @@ template = cv2.imread('./images/test55-1.jpg', 0)
 w, h = template.shape[::-1]
 res = cv2.matchTemplate(img_gray, template, cv2.TM_CCOEFF_NORMED)
 print(res)
-threshold = 0.5
+threshold = 0.4
 
 loc = np.where(res >= threshold)
 print(loc)
