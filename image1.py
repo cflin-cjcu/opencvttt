@@ -9,6 +9,13 @@ np.set_printoptions(suppress=True)
 # Load the model
 model = tensorflow.keras.models.load_model('keras_model.h5')
 
+# load label file
+label_file = open('labels.txt','r')
+list_labels = []
+for line in label_file:
+    line1 = line.strip()
+    list_labels.append(line1)
+label_file.close()
 # Create the array of the right shape to feed into the keras model
 # The 'length' or number of images you can put into the array is
 # determined by the first position in the shape tuple, in this case 1.
@@ -40,9 +47,9 @@ while True:
 
     # run the inference
     prediction = model.predict(data)
-    # print(prediction)
+    print(prediction)
     index = np.argmax(prediction)
-    print(index)
+    cv2.putText(image,str(list_labels[index]),(10,30),cv2.FONT_HERSHEY_SIMPLEX,1,(255,0,0),2)
     cv2.imshow('image',image)
     if cv2.waitKey(1) & 0xFF == ord('q'):
         break
