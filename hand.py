@@ -50,13 +50,13 @@ class HandDetector:
         if self.results.multi_hand_landmarks:
             
             for handLms in self.results.multi_hand_landmarks:
-                print(handLms)
+                # print(handLms)
                 if draw:
                     self.mpDraw.draw_landmarks(img, handLms,
                                                self.mpHands.HAND_CONNECTIONS)
         return img
 
-    def findPosition(self, img, handNo=0, draw=False):
+    def findPosition(self, img, handNo=0, draw=True):
         """
         Finds landmarks of a single hand and puts them in a list
         in pixel format. Also finds the bounding box around the hand.
@@ -81,6 +81,7 @@ class HandDetector:
                 self.lmList.append([px, py])
                 if draw:
                     cv2.circle(img, (px, py), 5, (255, 0, 255), cv2.FILLED)
+            # print(self.lmList)        
             xmin, xmax = min(xList), max(xList)
             ymin, ymax = min(yList), max(yList)
             boxW, boxH = xmax - xmin, ymax - ymin
@@ -92,7 +93,7 @@ class HandDetector:
             if draw:
                 cv2.rectangle(img, (bbox[0] - 20, bbox[1] - 20),
                               (bbox[0] + bbox[2] + 20, bbox[1] + bbox[3] + 20),
-                              (0, 255, 0), 2)
+                              (0, 255, 255), 2)
 
         return self.lmList, bboxInfo
 
