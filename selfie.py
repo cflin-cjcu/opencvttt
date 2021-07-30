@@ -31,9 +31,12 @@ with mp_selfie_segmentation.SelfieSegmentation(
 # For webcam input:
 BG_COLOR = (192, 192, 192) # gray
 cap = cv2.VideoCapture(1)
+
 with mp_selfie_segmentation.SelfieSegmentation(
     model_selection=1) as selfie_segmentation:
-  bg_image = None
+  image2 = cv2.imread('./images/tokyo2020.jpg')
+  image2 = cv2.resize(image2,(640,480))
+  bg_image = cv2.GaussianBlur(image2,(11,11),0)
   while cap.isOpened():
     success, image = cap.read()
     if not success:
