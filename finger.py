@@ -23,7 +23,7 @@ while True:
             cv2.putText(img,'Rock',(bbox[0] + 200, bbox[1] - 30),cv2.FONT_HERSHEY_PLAIN, 2, (0, 255, 0), 2)
         elif totalFingers ==5:
             cv2.putText(img,'Paper',(bbox[0] + 200, bbox[1] - 30),cv2.FONT_HERSHEY_PLAIN, 2, (0, 255, 0), 2)
-        elif fingers[1] == fingers[2] == 1:
+        elif fingers[1] == fingers[2] == 1 and totalFingers == 2:
             cv2.putText(img,'Scissors',(bbox[0] + 200, bbox[1] - 30),cv2.FONT_HERSHEY_PLAIN, 2, (0, 255, 0), 2)
         # cv2.putText(img, f'Fingers:{totalFingers}', (bbox[0] + 200, bbox[1] - 30),
                     # cv2.FONT_HERSHEY_PLAIN, 2, (0, 255, 0), 2)
