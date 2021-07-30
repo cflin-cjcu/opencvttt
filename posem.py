@@ -44,6 +44,7 @@ class PoseDetector:
         imgRGB = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
         self.results = self.pose.process(imgRGB)
         if self.results.pose_landmarks:
+            # print(self.results.pose_landmarks)
             if draw:
                 self.mpDraw.draw_landmarks(img, self.results.pose_landmarks,
                                            self.mpPose.POSE_CONNECTIONS)
@@ -80,7 +81,7 @@ class PoseDetector:
             if draw:
                 cv2.rectangle(img, bbox, (255, 0, 255), 3)
                 cv2.circle(img, (cx, cy), 5, (255, 0, 0), cv2.FILLED)
-
+        print(self.lmList)
         return self.lmList, self.bboxInfo
 
     def findAngle(self, img, p1, p2, p3, draw=True):
@@ -122,7 +123,7 @@ class PoseDetector:
 
 
 def main():
-    cap = cv2.VideoCapture(0)
+    cap = cv2.VideoCapture(1)
     detector = PoseDetector(upBody=True)
     while True:
         success, img = cap.read()
@@ -133,9 +134,11 @@ def main():
             cv2.circle(img, center, 5, (255, 0, 255), cv2.FILLED)
 
         cv2.imshow("Image", img)
-        cv2.waitKey(1)
+        k=cv2.waitKey(1)
+        if k==27:
+            break
+    cv2.destroyAllWindows()    
 
 
 if __name__ == "__main__":
     main()
-    
